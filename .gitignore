@@ -1,0 +1,5 @@
+# Bytecode Java
+*.class
+
+# VSCode
+.vscode/
