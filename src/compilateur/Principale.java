@@ -16,17 +16,12 @@ public class Principale {
      * @param args arguments de la ligne de commande (non utilisés)
      */
     public static void main(String[] args) {
-        String[] tests = {
-            "2+3;",
-            "2*3+4;",
-            "(2+3)*4;"
-        };
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        System.out.print("Entrez une expression (ex: 2+3;) : ");
+        String expression = scanner.nextLine().trim();
+        scanner.close();
 
-        for (String test : tests) {
-            System.out.println("=== Compilation de \"" + test + "\" ===");
-            Analyseur analyseur = new Analyseur(test);
-            analyseur.compilateur();
-            System.out.println();
-        }
+        Analyseur analyseur = new Analyseur(expression);
+        analyseur.compilateur();
     }
 }

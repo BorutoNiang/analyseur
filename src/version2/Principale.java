@@ -20,19 +20,12 @@ public class Principale {
      * @param args arguments de la ligne de commande (non utilisés)
      */
     public static void main(String[] args) {
-        String[] tests = {
-            "2+3;",       // valide
-            "2*3+4;",     // valide
-            "(2+3)*4;",   // valide
-            "2+3$4;",     // invalide : $ à la place de *
-            "2+3",        // invalide : pas de point-virgule (débordement géré)
-            "2+;"         // invalide : opérande manquant
-        };
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        System.out.print("Entrez une expression (ex: 2+3;) : ");
+        String expression = scanner.nextLine().trim();
+        scanner.close();
 
-        for (String test : tests) {
-            System.out.print("Test \"" + test + "\" -> ");
-            Analyseur analyseur = new Analyseur(test);
-            analyseur.analyseur();
-        }
+        Analyseur analyseur = new Analyseur(expression);
+        analyseur.analyseur();
     }
 }

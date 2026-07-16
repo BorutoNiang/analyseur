@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * Classe de test pour la version 1 de l'analyseur syntaxique.
  *
@@ -11,23 +13,18 @@ public class Principale {
     public Principale() {}
 
     /**
-     * Point d'entrée du programme. Soumet plusieurs expressions à l'analyseur.
+     * Point d'entrée du programme. Lit une expression saisie par l'utilisateur
+     * et la soumet à l'analyseur.
      *
      * @param args arguments de la ligne de commande (non utilisés)
      */
     public static void main(String[] args) {
-        String[] tests = {
-            "2+3;",       // valide
-            "2*3+4;",     // valide
-            "(2+3)*4;",   // valide
-            "2+;",        // invalide
-            "2+3"         // invalide — provoque un débordement (corrigé en v2)
-        };
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Entrez une expression (ex: 2+3;) : ");
+        String expression = scanner.nextLine().trim();
+        scanner.close();
 
-        for (String test : tests) {
-            System.out.print("Test \"" + test + "\" -> ");
-            Analyseur analyseur = new Analyseur(test);
-            analyseur.analyseur();
-        }
+        Analyseur analyseur = new Analyseur(expression);
+        analyseur.analyseur();
     }
 }

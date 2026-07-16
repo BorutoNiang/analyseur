@@ -16,19 +16,12 @@ public class Principale {
      * @param args arguments de la ligne de commande (non utilisés)
      */
     public static void main(String[] args) {
-        String[] tests = {
-            "2+3;",        // attendu : 5
-            "2*3+4;",      // attendu : 10
-            "(2+3)*4;",    // attendu : 20
-            "3*3+4*2;",    // attendu : 17
-            "2+3$4;",      // invalide
-            "2+3"          // invalide (débordement géré)
-        };
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        System.out.print("Entrez une expression (ex: 2+3;) : ");
+        String expression = scanner.nextLine().trim();
+        scanner.close();
 
-        for (String test : tests) {
-            System.out.print("Test \"" + test + "\" -> ");
-            Analyseur analyseur = new Analyseur(test);
-            analyseur.interpreteur();
-        }
+        Analyseur analyseur = new Analyseur(expression);
+        analyseur.interpreteur();
     }
 }
